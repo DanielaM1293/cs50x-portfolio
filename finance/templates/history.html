@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<div class="max-w-6xl mx-auto">
+
+    <div class="mb-8">
+        <h1 class="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+             Transaction History
+        </h1>
+
+        <p class="text-gray-500 mt-2">
+            Review all your stock purchases and sales.
+        </p>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+        <table class="w-full">
+
+            <thead>
+                <tr class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+                    <th class="px-6 py-4 text-left"> Symbol</th>
+                    <th class="px-6 py-4 text-left"> Shares</th>
+                    <th class="px-6 py-4 text-left"> Price</th>
+                    <th class="px-6 py-4 text-left"> Date / Time</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for t in transactions %}
+                    <tr class="border-b hover:bg-purple-50 transition duration-200">
+                        <td class="px-6 py-4 font-bold text-indigo-700">
+                            {{ t.symbol }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ t.shares }}
+                        </td>
+
+                        <td class="px-6 py-4 font-semibold text-green-600">
+                            {{ t.price | usd }}
+                        </td>
+
+                        <td class="px-6 py-4 text-gray-600">
+                            {{ t.timestamp }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+{% endblock %}

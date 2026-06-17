@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>C$50 Finance: {% block title %}{% endblock %}</title>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-md border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <!-- Logo -->
+            <a href="/" class="text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                 C$50 Finance
+            </a>
+
+            <!-- Menu -->
+            <div class="flex items-center gap-5">
+
+                {% if session["user_id"] %}
+
+                    <a href="/quote"
+                       class="font-medium hover:text-blue-600 transition">
+                         Quote
+                    </a>
+
+                    <a href="/buy"
+                       class="font-medium hover:text-green-600 transition">
+                         Buy
+                    </a>
+
+                    <a href="/sell"
+                       class="font-medium hover:text-red-500 transition">
+                         Sell
+                    </a>
+
+                    <a href="/history"
+                       class="font-medium hover:text-purple-600 transition">
+                         History
+                    </a>
+
+                    <a href="/logout"
+                       class="bg-gradient-to-r from-red-500 to-pink-500 text-white px-5 py-2 rounded-xl shadow hover:scale-105 transition">
+                        Log Out
+                    </a>
+
+                {% else %}
+
+                    <a href="/register"
+                       class="font-medium hover:text-blue-600 transition">
+                        Register
+                    </a>
+
+                    <a href="/login"
+                       class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:scale-105 transition">
+                        Log In
+                    </a>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        {% block main %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-20 py-6 text-center text-sm text-gray-500">
+        Built with  using Flask + Tailwind CSS
+    </footer>
+
+</body>
+</html>
